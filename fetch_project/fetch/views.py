@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth.decorators import login_required
 
 from fetch.models import Sharer, Getter, Connection
 from fetch.forms import UserForm
@@ -50,3 +51,13 @@ def user_login(request):
             return HttpResponse("Invalid login details supplied")
     else:
         return render(request, 'fetch/login.html', {})
+
+@login_required
+def restricted(request):
+    return HttpResponse("Since you're logged in, you can see this text!")
+
+@login_required
+def user_logout(request):
+
+    logout(request)
+    return HttpResponseRedirect('/fetch/')

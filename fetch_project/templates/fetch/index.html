@@ -8,19 +8,14 @@
   <body>
 
 		  {% if user.is_authenticated %}
-		  <h1> Welcome to Fetch! Hello {{ user.username }}!</h1>	  
+		  <h1> Welcome to Fetch {{ user.username }}!!!</h1>
+      <a href="/fetch/restricted/">Restricted Page</a><br />
+      <a href="/fetch/logout">Logout</a><br />
 		  {% else %}
-		  <h1> Fetch says... hello world!</h1>
+		  <h1> Fetch says... Coding is Fun!!!</h1>
+      <a href='/fetch/register'>Register</a><br />
+      <a href='/fetch/login'>Login</a><br />
 		  {% endif %}
-	<div>
-   	  <h3>Fetch</h3>
-		<br />
-		  <ul>
-		    <li><a href='/fetch/register'>Register</a></li>
-			<li><a href='/fetch/login'>Login</a></li>
-			<li><a href='/fetch/logout'>Logout</a></li>
-		  </ul>
-    </div>	  
+
   </body>
 </html>
-
