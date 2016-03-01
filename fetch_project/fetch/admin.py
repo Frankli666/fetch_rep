@@ -1,3 +1,6 @@
 from django.contrib import admin
+from fetch.models import Sharer, Getter, Connection
 
-# Register your models here.
+admin.site.register(Sharer)
+admin.site.register(Getter)
+admin.site.register(Connection)

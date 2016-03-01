@@ -24,14 +24,14 @@ class MasterUser(models.Model):
     nationality = models.CharField(max_length=254)
     language = models.CharField(max_length=254)
 
-class Sharer(models.Model):
+class Sharer(MasterUser):
     '''sharer'''
     sharer_name = models.OneToOneField(MasterUser)
 
     def __unicode__(self):
         return self.sharer_name.username
 
-class Getter(models.Model):
+class Getter(MasterUser):
     getter_name = models.OneToOneField(MasterUser)
 
     def __unicode__(self):
