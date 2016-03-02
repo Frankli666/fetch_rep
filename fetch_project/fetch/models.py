@@ -13,7 +13,18 @@ class MasterUser(models.Model):
     picture = models.ImageField(upload_to='profile_images', blank=True)
     alt_email = models.EmailField(max_length=254)
     dob = models.DateField()
-    gender = models.CharField(max_length=254)
+
+    MALE = 'M'
+    FEMALE = 'F'
+    GENDER_TYPE = (
+        (MALE, 'Male'),
+        (FEMALE, 'Female'),
+    )
+    gender = models.CharField(max_length=1,
+                                      choices=GENDER_TYPE,
+                                      default=MALE)
+
+    #gender = models.CharField(max_length=254)
     profession = models.CharField(max_length=254)
     address = models.TextField()
     mobile = models.IntegerField()
@@ -23,6 +34,9 @@ class MasterUser(models.Model):
     country = models.CharField(max_length=254)
     nationality = models.CharField(max_length=254)
     language = models.CharField(max_length=254)
+
+    def __unicode__(self):
+        return self.user.username
 
 class Sharer(MasterUser):
     '''sharer'''
